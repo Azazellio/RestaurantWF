@@ -1,0 +1,13 @@
+C:\Users\Gabella\Documents\KPI\2 Course\OOOP\Kursach\RestaurantWF\Restaurant1\bin\Debug\Restaurant1.exe.config
+C:\Users\Gabella\Documents\KPI\2 Course\OOOP\Kursach\RestaurantWF\Restaurant1\bin\Debug\Restaurant1.exe
+C:\Users\Gabella\Documents\KPI\2 Course\OOOP\Kursach\RestaurantWF\Restaurant1\bin\Debug\Restaurant1.pdb
+C:\Users\Gabella\Documents\KPI\2 Course\OOOP\Kursach\RestaurantWF\Restaurant1\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Gabella\Documents\KPI\2 Course\OOOP\Kursach\RestaurantWF\Restaurant1\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Gabella\Documents\KPI\2 Course\OOOP\Kursach\RestaurantWF\Restaurant1\obj\Debug\Restaurant1.csprojAssemblyReference.cache
+C:\Users\Gabella\Documents\KPI\2 Course\OOOP\Kursach\RestaurantWF\Restaurant1\obj\Debug\Restaurant1.Properties.Resources.resources
+C:\Users\Gabella\Documents\KPI\2 Course\OOOP\Kursach\RestaurantWF\Restaurant1\obj\Debug\Restaurant1.csproj.GenerateResource.cache
+C:\Users\Gabella\Documents\KPI\2 Course\OOOP\Kursach\RestaurantWF\Restaurant1\obj\Debug\Restaurant1.csproj.CoreCompileInputs.cache
+C:\Users\Gabella\Documents\KPI\2 Course\OOOP\Kursach\RestaurantWF\Restaurant1\obj\Debug\Restaurant1.csproj.CopyComplete
+C:\Users\Gabella\Documents\KPI\2 Course\OOOP\Kursach\RestaurantWF\Restaurant1\obj\Debug\Restaurant1.exe
+C:\Users\Gabella\Documents\KPI\2 Course\OOOP\Kursach\RestaurantWF\Restaurant1\obj\Debug\Restaurant1.pdb
+C:\Users\Gabella\Documents\KPI\2 Course\OOOP\Kursach\RestaurantWF\Restaurant1\obj\Debug\Restaurant1.Form1.resources
