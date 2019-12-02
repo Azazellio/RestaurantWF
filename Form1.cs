@@ -95,5 +95,16 @@ namespace Restaurant1
             }
             catch { }
         }
+
+        private void TabControl1_MouseClick(object sender, MouseEventArgs e)
+        {
+            OrdersList.Items.Clear();
+            OrdersList.Refresh();
+            foreach (Order order in kitchen.GetOrders())
+            {
+                var item = new ListViewItem(new string[3] { order.GetId().ToString(), order.GetTime().ToString(), order.GetDishes().Count().ToString() });
+                OrdersList.Items.Add(item);
+            }
+        }
     }
 }

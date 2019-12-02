@@ -13,7 +13,7 @@ namespace Restaurant1
         public static readonly string filenamexml = "order1.xml";
         public static readonly string filenamejson = "orders.json";
         public static readonly string filenametxt = "orders.txt";
-        public static readonly string filenamebinary = "4_Orders.lol";
+        public static readonly string filenamebinary = "noOrders.lol";
         private Kitchen kitchen;
         private BinarySerializer bs;
         public FormLogic()

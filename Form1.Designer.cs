@@ -40,19 +40,25 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.RemoveDishLabel = new System.Windows.Forms.Label();
+            this.RemoveB = new System.Windows.Forms.Button();
             this.TempOrderTimeLabel = new System.Windows.Forms.Label();
             this.TempOrderTimeCheck = new System.Windows.Forms.Button();
             this.TimeNeededToCookLabel = new System.Windows.Forms.Label();
             this.SubmitOrderLabel = new System.Windows.Forms.Label();
             this.BucketLabel = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.RemoveB = new System.Windows.Forms.Button();
-            this.RemoveDishLabel = new System.Windows.Forms.Label();
+            this.OrdersList = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.OrderTimeLabel = new System.Windows.Forms.Label();
             this.MenuLabel = new System.Windows.Forms.Label();
             this.menuStrip2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // menu
@@ -153,6 +159,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(681, 482);
             this.tabControl1.TabIndex = 6;
+            this.tabControl1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TabControl1_MouseClick);
             // 
             // tabPage1
             // 
@@ -183,6 +190,30 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Create Order";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // RemoveDishLabel
+            // 
+            this.RemoveDishLabel.AutoSize = true;
+            this.RemoveDishLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RemoveDishLabel.Location = new System.Drawing.Point(6, 36);
+            this.RemoveDishLabel.Name = "RemoveDishLabel";
+            this.RemoveDishLabel.Size = new System.Drawing.Size(128, 25);
+            this.RemoveDishLabel.TabIndex = 10;
+            this.RemoveDishLabel.Text = "Remove Dish";
+            // 
+            // RemoveB
+            // 
+            this.RemoveB.BackColor = System.Drawing.Color.Maroon;
+            this.RemoveB.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.RemoveB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RemoveB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RemoveB.Location = new System.Drawing.Point(45, 79);
+            this.RemoveB.Name = "RemoveB";
+            this.RemoveB.Size = new System.Drawing.Size(46, 36);
+            this.RemoveB.TabIndex = 9;
+            this.RemoveB.Text = "-";
+            this.RemoveB.UseVisualStyleBackColor = false;
+            this.RemoveB.Click += new System.EventHandler(this.RemoveB_Click);
             // 
             // TempOrderTimeLabel
             // 
@@ -238,6 +269,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.OrdersList);
+            this.tabPage3.Controls.Add(this.OrderTimeLabel);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -246,29 +279,48 @@
             this.tabPage3.Text = "Check Order";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // RemoveB
+            // OrdersList
             // 
-            this.RemoveB.BackColor = System.Drawing.Color.Maroon;
-            this.RemoveB.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.RemoveB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RemoveB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RemoveB.Location = new System.Drawing.Point(45, 79);
-            this.RemoveB.Name = "RemoveB";
-            this.RemoveB.Size = new System.Drawing.Size(46, 36);
-            this.RemoveB.TabIndex = 9;
-            this.RemoveB.Text = "-";
-            this.RemoveB.UseVisualStyleBackColor = false;
-            this.RemoveB.Click += new System.EventHandler(this.RemoveB_Click);
+            this.OrdersList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3});
+            this.OrdersList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OrdersList.GridLines = true;
+            this.OrdersList.HideSelection = false;
+            this.OrdersList.Location = new System.Drawing.Point(243, 49);
+            this.OrdersList.Name = "OrdersList";
+            this.OrdersList.Size = new System.Drawing.Size(424, 398);
+            this.OrdersList.TabIndex = 1;
+            this.OrdersList.UseCompatibleStateImageBehavior = false;
+            this.OrdersList.View = System.Windows.Forms.View.Details;
             // 
-            // RemoveDishLabel
+            // columnHeader1
             // 
-            this.RemoveDishLabel.AutoSize = true;
-            this.RemoveDishLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RemoveDishLabel.Location = new System.Drawing.Point(6, 36);
-            this.RemoveDishLabel.Name = "RemoveDishLabel";
-            this.RemoveDishLabel.Size = new System.Drawing.Size(128, 25);
-            this.RemoveDishLabel.TabIndex = 10;
-            this.RemoveDishLabel.Text = "Remove Dish";
+            this.columnHeader1.Text = "Id";
+            this.columnHeader1.Width = 40;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Time Needed";
+            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader2.Width = 150;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Dishes Count";
+            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader3.Width = 120;
+            // 
+            // OrderTimeLabel
+            // 
+            this.OrderTimeLabel.AutoSize = true;
+            this.OrderTimeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OrderTimeLabel.Location = new System.Drawing.Point(421, 12);
+            this.OrderTimeLabel.Name = "OrderTimeLabel";
+            this.OrderTimeLabel.Size = new System.Drawing.Size(99, 25);
+            this.OrderTimeLabel.TabIndex = 0;
+            this.OrderTimeLabel.Text = "All Orders";
             // 
             // MenuLabel
             // 
@@ -301,6 +353,8 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -329,6 +383,11 @@
         private System.Windows.Forms.Label RemoveDishLabel;
         private System.Windows.Forms.Button RemoveB;
         private System.Windows.Forms.Label MenuLabel;
+        private System.Windows.Forms.Label OrderTimeLabel;
+        private System.Windows.Forms.ListView OrdersList;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
     }
 }
 
