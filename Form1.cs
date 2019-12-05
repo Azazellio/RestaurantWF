@@ -33,7 +33,6 @@ namespace Restaurant1
         }
         private void SubmitOrderButton_Click(object sender, EventArgs e)
         {
-            //textB.Text = kitchen.GetOrders()[0].GetDishesS();
             var res = new List<String>();
             foreach(ListViewItem item in Bucket.Items)
             {
@@ -44,6 +43,13 @@ namespace Restaurant1
             var order = formLogic.CreateOrder(res.ToArray());
             kitchen.AddOrder(order);
             textB.Text = kitchen.GetOrders()[0].GetDishesS();
+            if (FormLogic.isKitchenStarted)
+                kitchen.Continue(order);
+            else
+            {
+                kitchen.Start();
+                FormLogic.KitchenStarted();
+            }
         }
         private void Menu_ItemDrag(object sender, ItemDragEventArgs e)
         {
@@ -60,7 +66,6 @@ namespace Restaurant1
             string[] itemArr = new string[] { e.Data.GetData(DataFormats.Text).ToString(), time };
             ListViewItem item = new ListViewItem(itemArr);
             Bucket.Items.Add(item);
-            //Bucket.Items.Add(e.Data.GetData(DataFormats.Text).ToString(), time);
 
         }
         private void Bucket_DragEnter(object sender, DragEventArgs e)
@@ -82,7 +87,7 @@ namespace Restaurant1
             {
                 resL.Add(item.SubItems[0].Text);
             }
-            var order = formLogic.CreateOrder(resL.ToArray());
+            var order = formLogic.CreateTempOrder(resL.ToArray());
             var res = kitchen.GetTempOrderTime(order).ToString();
             TempOrderTimeLabel.Text = res;
         }
@@ -102,9 +107,14 @@ namespace Restaurant1
             OrdersList.Refresh();
             foreach (Order order in kitchen.GetOrders())
             {
-                var item = new ListViewItem(new string[3] { order.GetId().ToString(), order.GetTime().ToString(), order.GetDishes().Count().ToString() });
+                var item = new ListViewItem(new string[3] { order.GetId().ToString(), kitchen.CheckOrder(order).ToString(), order.GetDishes().Count().ToString() });
                 OrdersList.Items.Add(item);
             }
+        }
+
+        private void TempB1_Click(object sender, EventArgs e)
+        {
+            textB.Text = formLogic.GetAllTime();
         }
     }
 }

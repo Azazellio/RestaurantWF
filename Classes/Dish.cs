@@ -1,10 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.Runtime.Serialization;
 using System.Xml;
 using System.Xml.Schema;
-using System.Xml.Serialization;
-using Newtonsoft.Json;
-using System.ServiceModel;
-using System.Runtime.Serialization;
 
 namespace Restaurant1.Classes
 {
@@ -127,7 +125,6 @@ namespace Restaurant1.Classes
             else
                 this.time_cooking = 0;
         }
-
         public void SetPropsAfterJsonDeser(Order order)
         {
 

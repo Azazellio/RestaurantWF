@@ -14,11 +14,16 @@ namespace Restaurant1
         public static readonly string filenamejson = "orders.json";
         public static readonly string filenametxt = "orders.txt";
         public static readonly string filenamebinary = "noOrders.lol";
+        public static bool isKitchenStarted = false;
         private Kitchen kitchen;
         private BinarySerializer bs;
         public FormLogic()
         {
             this.bs = new BinarySerializer(filenamebinary);
+        }
+        public static void KitchenStarted()
+        {
+            isKitchenStarted = true;
         }
         public Order ProcessInputDishes(string unsplitted)
         {
@@ -59,6 +64,16 @@ namespace Restaurant1
             }
             return order;
         }
+        public Order CreateTempOrder(params string[] dishesS)
+        {
+            Order order = new Order();
+            Kitchen newKitchen = (Kitchen)kitchen.Clone();
+            foreach (string dishS in dishesS)
+            {
+                order.AddDish(newKitchen.GetDishByName(dishS));
+            }
+            return order;
+        }
         public String GetDishInfo(string name)
         {
             Dish dish = kitchen.GetDishByName(name);
@@ -67,6 +82,16 @@ namespace Restaurant1
         public String GetTempTime(Order order)
         {
             return kitchen.GetTempOrderTime(order).ToString();
+        }
+        public string GetAllTime()
+        {
+            var res = "";
+            foreach (Order order in kitchen.GetOrders())
+            {
+                res += "Order: " + order.GetId().ToString() + " checkorder: "+ kitchen.CheckOrder(order).ToString() + " " + "order time_cooking: " +
+                    order.GetTimeCooking().ToString() + Environment.NewLine;
+            }
+            return res;
         }
     }
 }

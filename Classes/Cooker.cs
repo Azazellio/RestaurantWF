@@ -48,14 +48,11 @@ namespace Restaurant1.Classes
         {
             if (this.dish_queue.Count == 0)
             {
-                dish.SetTimeCooking(dish.GetTime());
+                dish.SetTimeCooking(dish.GetTimeCooking());
             }
             else
             {
-                int result;
-                result = dish_queue[dish_queue.Count - 1].GetTimeCooking() + (dish.GetTime() / 2);
-                //Console.WriteLine("Adding " + dish.GetName() +" to cooker "+ this.id + ":");
-                //Console.WriteLine(dish_queue[dish_queue.Count - 1].GetTimeCooking() + " + " + dish.GetTime() + " = " + result);
+                var result = dish_queue[dish_queue.Count - 1].GetTimeCooking() + (dish.GetTime());
                 dish.SetTimeCooking(result);
             }
         }
@@ -95,6 +92,10 @@ namespace Restaurant1.Classes
                 result.Add(dish.GetTimeCooking().ToString());
             }
             return "cooker " + this.id + ": " + string.Join(", ", result);
+        }
+        public void ResetKitchen(Kitchen newkitchen)
+        {
+            this.kitchen = newkitchen;
         }
     }
 }

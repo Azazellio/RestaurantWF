@@ -102,6 +102,16 @@ namespace Restaurant1.Classes
         {
             return this.time;
         }
+        public int GetTimeCooking()
+        {
+            int res = 0;
+            foreach(Dish dish in this.dishes)
+            {
+                if (res < dish.GetTimeCooking())
+                    res = dish.GetTimeCooking();
+            }
+            return res;
+        }
         public String GetDishesInfo()
         {
             var res = "";
@@ -163,7 +173,10 @@ namespace Restaurant1.Classes
             }
             return true;
         }
-
+        public void ResetKitchen(Kitchen newkitchen)
+        {
+            this.kitchen = newkitchen;
+        }
         public void SetPropsAfterJDeserealization(Kitchen kitchen)
         {
             this.dishes = this.dishesArr.ToList();

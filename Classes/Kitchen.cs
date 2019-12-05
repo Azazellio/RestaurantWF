@@ -325,20 +325,38 @@ namespace Restaurant1.Classes
         public object Clone()
         {
             var newkitchen = new Kitchen();
+            var newCookers = new List<Cooker>(this.cookers);
+            var newOrders = new List<Order>(this.orders);
+            var newReadyOrders = new List<Order>();
+            var newQuisines = new List<Quisine>(this.quisines);
 
-            if (this.orders.Count > 0)
-                newkitchen.orders = new List<Order>(this.orders);
-            else
-                newkitchen.orders = new List<Order>();
-
-            if (this.ready_orders.Count > 0)
-                newkitchen.ready_orders = new List<Order>(this.ready_orders);
-            else
-                newkitchen.ready_orders = new List<Order>();
-
-            newkitchen.cookers = new List<Cooker>(this.cookers);
-            newkitchen.menu = new List<Dish>(this.menu);
-            newkitchen.quisines = new List<Quisine>(this.quisines);
+            foreach (Quisine quisine in newQuisines)
+            {
+                newkitchen.AddQuisine(quisine);
+            }
+            /*foreach (Order order in newOrders)
+            {
+                Order neworder = new Order();
+                foreach (Dish dish in order.GetDishes())
+                {
+                    var name = dish.GetName();
+                    neworder.AddDish(newkitchen.GetDishByName(name));
+                }
+                newkitchen.AddOrder(order);
+            }
+            foreach (Order order in newReadyOrders)
+            {
+                Order neworder = new Order();
+                foreach (Dish dish in order.GetDishes())
+                {
+                    neworder.AddDish(dish);
+                }
+                newkitchen.AddOrder(order);
+            }*/
+            foreach (Cooker cook in newCookers)
+            {
+                newkitchen.AddCooker(cook);
+            }
             newkitchen.TimePoint = this.TimePoint;
             return newkitchen;
         }

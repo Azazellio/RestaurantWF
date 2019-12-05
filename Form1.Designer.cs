@@ -54,6 +54,7 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.OrderTimeLabel = new System.Windows.Forms.Label();
             this.MenuLabel = new System.Windows.Forms.Label();
+            this.tempB1 = new System.Windows.Forms.Button();
             this.menuStrip2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -117,10 +118,10 @@
             // textB
             // 
             this.textB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textB.Location = new System.Drawing.Point(323, 72);
+            this.textB.Location = new System.Drawing.Point(132, 72);
             this.textB.Multiline = true;
             this.textB.Name = "textB";
-            this.textB.Size = new System.Drawing.Size(344, 375);
+            this.textB.Size = new System.Drawing.Size(535, 375);
             this.textB.TabIndex = 3;
             // 
             // menuStrip1
@@ -163,6 +164,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.tempB1);
             this.tabPage1.Controls.Add(this.textB);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
@@ -332,6 +334,16 @@
             this.MenuLabel.TabIndex = 7;
             this.MenuLabel.Text = "Menu";
             // 
+            // tempB1
+            // 
+            this.tempB1.Location = new System.Drawing.Point(34, 152);
+            this.tempB1.Name = "tempB1";
+            this.tempB1.Size = new System.Drawing.Size(75, 23);
+            this.tempB1.TabIndex = 4;
+            this.tempB1.Text = "temp1";
+            this.tempB1.UseVisualStyleBackColor = true;
+            this.tempB1.Click += new System.EventHandler(this.TempB1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -388,6 +400,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.Button tempB1;
     }
 }
 
