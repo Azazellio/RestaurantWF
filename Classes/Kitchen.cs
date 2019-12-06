@@ -22,6 +22,7 @@ namespace Restaurant1.Classes
             this.ready_orders = new List<Order>();
             this.TimePoint = DateTime.Now;
             this.UpdateMenu();
+            this.seconds = 0;
         }
         private List<Order> orders;
         private List<Order> ready_orders;
@@ -29,13 +30,14 @@ namespace Restaurant1.Classes
         private List<Dish> menu;
         private List<Quisine> quisines;
         private DateTime TimePoint;
+        private int seconds;
 
         public string GetInfo()
         {
             string res = "Menu:\n";
             res += this.ShowMenu();
             res += "Cuisines:\n" + this.ShowQuisines();
-            res += "Cookers;\n" + this.PrintCookers() + "\n";
+            res += "Cookers:\n" + this.PrintCookers() + "\n";
             res += "Orders:\n" + this.ShowOrders();
             return res;
         }
@@ -173,23 +175,33 @@ namespace Restaurant1.Classes
             return result;
         }
         //TimePoint
-        public String SetTimePoint()
+        public void SetTimePoint()
         {
             var oldTimePoint = this.TimePoint;
             this.TimePoint = DateTime.Now;
             TimeSpan difference = this.TimePoint - oldTimePoint;
             this.ProcessTimeDifference(difference);
             this.SetReadyOrders();
-            return (difference.Minutes + " minutes have passed");
         }
         private void ProcessTimeDifference(TimeSpan difference)
         {
             int minute_difference = difference.Minutes;
+            int seconds_difference = difference.Seconds % 60;
+            int bonus = 0;
+            if((this.seconds + seconds_difference) >= 60)
+            {
+                bonus = (this.seconds + seconds_difference) / 60;
+                this.seconds = (this.seconds + seconds_difference) % 60;
+            }
+            else
+            {
+                this.seconds += seconds_difference;
+            }
             foreach (Cooker cook in this.cookers)
             {
                 foreach (Dish dish in cook.GetQueue())
                 {
-                    dish.ReduceTimeCooking(minute_difference);
+                    dish.ReduceTimeCooking(minute_difference + bonus);
                 }
             }
             this.UpdateQueues();
