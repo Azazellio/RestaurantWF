@@ -233,7 +233,7 @@ namespace Restaurant1.Classes
             }
             return result;
         }
-        public string GetReadyOrders()
+        public string GetReadyOrdersS()
         {
             var res = "Orders:\n";
             foreach (Order order in orders)
@@ -246,6 +246,10 @@ namespace Restaurant1.Classes
                 res += order1.GetId() + "\n";
             }
             return res;
+        }
+        public List<Order> GetReadyOrders()
+        {
+            return this.ready_orders;
         }
         public List<Order> GetOrders()
         {

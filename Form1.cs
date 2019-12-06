@@ -40,6 +40,7 @@ namespace Restaurant1
             }
             Bucket.Items.Clear();
             Bucket.Refresh();
+            res.Remove(res[res.Count - 1]);
             var order = formLogic.CreateOrder(res.ToArray());
             kitchen.AddOrder(order);
             textB.Text = kitchen.GetOrders()[0].GetDishesS();
@@ -62,11 +63,28 @@ namespace Restaurant1
             {
                 Bucket.Items[0].Remove();
             }
+            else
+            {
+                if (Bucket.Items.Count > 0)
+                {
+                    Bucket.Items[Bucket.Items.Count - 1].SubItems[2].ResetStyle();
+                    Bucket.Items.RemoveAt(Bucket.Items.Count - 1);
+                }
+
+            }
             Dish dish = kitchen.GetDishByName(e.Data.GetData(DataFormats.Text).ToString());
             string time = dish.GetTime().ToString();
-            string[] itemArr = new string[] { e.Data.GetData(DataFormats.Text).ToString(), time };
+            string price = dish.GetPrice().ToString();
+            string[] itemArr = new string[] { e.Data.GetData(DataFormats.Text).ToString(), time, price };
             ListViewItem item = new ListViewItem(itemArr);
             Bucket.Items.Add(item);
+            var sum = formLogic.CountSumLV(Bucket, 2);
+            var sumarr = new string[] {"", "", sum.ToString() };
+
+            ListViewItem sumItem = new ListViewItem(sumarr);
+            sumItem.SubItems[2].BackColor = Color.LightGreen;
+            sumItem.UseItemStyleForSubItems = false;
+            Bucket.Items.Add(sumItem);
         }
         private void Bucket_DragEnter(object sender, DragEventArgs e)
         {
@@ -89,6 +107,7 @@ namespace Restaurant1
                 {
                     resL.Add(item.SubItems[0].Text);
                 }
+                resL.RemoveAt(resL.Count - 1);
                 var order = formLogic.CreateTempOrder(resL.ToArray());
                 var res = kitchen.GetTempOrderTime(order).ToString();
                 TempOrderTimeLabel.Text = res;
@@ -101,21 +120,37 @@ namespace Restaurant1
             try
             {
                 Bucket.Items.Remove(Bucket.SelectedItems[0]);
+                Bucket.Items.RemoveAt(Bucket.Items.Count - 1);
+                var sum = formLogic.CountSumLV(Bucket, 2);
+                var sumarr = new string[3] { "", "", sum.ToString() };
+                var item = new ListViewItem(sumarr);
+                item.SubItems[2].BackColor = Color.LightGreen;
+                item.UseItemStyleForSubItems = false;
+                Bucket.Items.Add(item);
+
             }
             catch { }
         }
-
         private void TabControl1_MouseClick(object sender, MouseEventArgs e)
         {
             OrdersList.Items.Clear();
             OrdersList.Refresh();
             foreach (Order order in kitchen.GetOrders())
             {
-                var item = new ListViewItem(new string[3] { order.GetId().ToString(), kitchen.CheckOrder(order).ToString(), order.GetDishes().Count().ToString() });
+                var item = new ListViewItem(new string[4] { order.GetId().ToString(),
+                    kitchen.CheckOrder(order).ToString(), order.GetDishes().Count().ToString(),
+                    order.GetPrice().ToString() });
+
                 OrdersList.Items.Add(item);
             }
+            ReadyOrdersList.Items.Clear();
+            ReadyOrdersList.Refresh();
+            foreach (Order order in kitchen.GetReadyOrders())
+            {
+                var item = new ListViewItem(new string[2] { order.GetId().ToString(), order.GetPrice().ToString() });
+                ReadyOrdersList.Items.Add(item);
+            }
         }
-
         private void TempB1_Click(object sender, EventArgs e)
         {
             textB.Text = formLogic.GetAllTime();

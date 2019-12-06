@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Restaurant1
 {
@@ -92,6 +93,15 @@ namespace Restaurant1
                     order.GetTimeCooking().ToString() + Environment.NewLine;
             }
             return res;
+        }
+        public int CountSumLV(ListView lv, int index)
+        {
+            int sum = 0;
+            foreach(ListViewItem item in lv.Items)
+            {
+                sum += int.Parse(item.SubItems[index].Text);
+            }
+            return sum;
         }
     }
 }
