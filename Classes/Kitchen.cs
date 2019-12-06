@@ -68,12 +68,12 @@ namespace Restaurant1.Classes
         }
         public string PrintCookers()
         {
-            var res = new List<int>();
+            var res = "";
             foreach (Cooker cook in this.cookers)
             {
-                res.Add(cook.PrintId());
+                res += "Cooker " + cook.GetId().ToString()+ "\t" + cook.GetQueueS() + Environment.NewLine;
             }
-            return string.Join(", ", res);
+            return res;
         }
         public void AddOrder(Order order)
         {
@@ -324,8 +324,8 @@ namespace Restaurant1.Classes
 
         public object Clone()
         {
+            var isStarted = false;
             var newkitchen = new Kitchen();
-            var newCookers = new List<Cooker>(this.cookers);
             var newOrders = new List<Order>(this.orders);
             var newReadyOrders = new List<Order>();
             var newQuisines = new List<Quisine>(this.quisines);
@@ -334,15 +334,23 @@ namespace Restaurant1.Classes
             {
                 newkitchen.AddQuisine(quisine);
             }
-            /*foreach (Order order in newOrders)
+            foreach (Order order in newOrders)
             {
                 Order neworder = new Order();
                 foreach (Dish dish in order.GetDishes())
                 {
                     var name = dish.GetName();
-                    neworder.AddDish(newkitchen.GetDishByName(name));
+                    try
+                    {
+                        neworder.AddDish(newkitchen.GetDishByName(name));
+                    }
+                    catch { }
                 }
                 newkitchen.AddOrder(order);
+                if (isStarted)
+                    newkitchen.Continue(order);
+                else
+                    newkitchen.Start();
             }
             foreach (Order order in newReadyOrders)
             {
@@ -352,10 +360,10 @@ namespace Restaurant1.Classes
                     neworder.AddDish(dish);
                 }
                 newkitchen.AddOrder(order);
-            }*/
-            foreach (Cooker cook in newCookers)
+            }
+            foreach (Cooker cook in this.cookers)
             {
-                newkitchen.AddCooker(cook);
+                newkitchen.AddCooker((Cooker)cook.Clone());
             }
             newkitchen.TimePoint = this.TimePoint;
             return newkitchen;

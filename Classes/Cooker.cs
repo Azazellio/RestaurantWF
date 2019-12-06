@@ -5,7 +5,7 @@ using System.Linq;
 namespace Restaurant1.Classes
 {
     [Serializable]
-    public class Cooker
+    public class Cooker:ICloneable
     {
         private static int ID = 0;
         public Cooker(params Quisine[] quisines)
@@ -96,6 +96,12 @@ namespace Restaurant1.Classes
         public void ResetKitchen(Kitchen newkitchen)
         {
             this.kitchen = newkitchen;
+        }
+
+        public object Clone()
+        {
+            var newCooker = new Cooker(this.quisines.ToArray());
+            return newCooker;
         }
     }
 }

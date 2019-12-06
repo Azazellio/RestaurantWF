@@ -39,6 +39,7 @@
             this.serializeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tempB1 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.RemoveDishLabel = new System.Windows.Forms.Label();
             this.RemoveB = new System.Windows.Forms.Button();
@@ -54,7 +55,8 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.OrderTimeLabel = new System.Windows.Forms.Label();
             this.MenuLabel = new System.Windows.Forms.Label();
-            this.tempB1 = new System.Windows.Forms.Button();
+            this.TempB2 = new System.Windows.Forms.Button();
+            this.TempB3 = new System.Windows.Forms.Button();
             this.menuStrip2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -164,6 +166,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.TempB3);
+            this.tabPage1.Controls.Add(this.TempB2);
             this.tabPage1.Controls.Add(this.tempB1);
             this.tabPage1.Controls.Add(this.textB);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
@@ -173,6 +177,16 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Dishes Info";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tempB1
+            // 
+            this.tempB1.Location = new System.Drawing.Point(34, 152);
+            this.tempB1.Name = "tempB1";
+            this.tempB1.Size = new System.Drawing.Size(75, 23);
+            this.tempB1.TabIndex = 4;
+            this.tempB1.Text = "temp1";
+            this.tempB1.UseVisualStyleBackColor = true;
+            this.tempB1.Click += new System.EventHandler(this.TempB1_Click);
             // 
             // tabPage2
             // 
@@ -334,15 +348,25 @@
             this.MenuLabel.TabIndex = 7;
             this.MenuLabel.Text = "Menu";
             // 
-            // tempB1
+            // TempB2
             // 
-            this.tempB1.Location = new System.Drawing.Point(34, 152);
-            this.tempB1.Name = "tempB1";
-            this.tempB1.Size = new System.Drawing.Size(75, 23);
-            this.tempB1.TabIndex = 4;
-            this.tempB1.Text = "temp1";
-            this.tempB1.UseVisualStyleBackColor = true;
-            this.tempB1.Click += new System.EventHandler(this.TempB1_Click);
+            this.TempB2.Location = new System.Drawing.Point(34, 242);
+            this.TempB2.Name = "TempB2";
+            this.TempB2.Size = new System.Drawing.Size(75, 23);
+            this.TempB2.TabIndex = 5;
+            this.TempB2.Text = "temp2";
+            this.TempB2.UseVisualStyleBackColor = true;
+            this.TempB2.Click += new System.EventHandler(this.TempB2_Click);
+            // 
+            // TempB3
+            // 
+            this.TempB3.Location = new System.Drawing.Point(34, 341);
+            this.TempB3.Name = "TempB3";
+            this.TempB3.Size = new System.Drawing.Size(75, 23);
+            this.TempB3.TabIndex = 6;
+            this.TempB3.Text = "temp3";
+            this.TempB3.UseVisualStyleBackColor = true;
+            this.TempB3.Click += new System.EventHandler(this.TempB3_Click);
             // 
             // Form1
             // 
@@ -401,6 +425,8 @@
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.Button tempB1;
+        private System.Windows.Forms.Button TempB2;
+        private System.Windows.Forms.Button TempB3;
     }
 }
 

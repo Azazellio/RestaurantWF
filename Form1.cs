@@ -47,6 +47,7 @@ namespace Restaurant1
                 kitchen.Continue(order);
             else
             {
+                kitchen.SetTimePoint();
                 kitchen.Start();
                 FormLogic.KitchenStarted();
             }
@@ -66,7 +67,6 @@ namespace Restaurant1
             string[] itemArr = new string[] { e.Data.GetData(DataFormats.Text).ToString(), time };
             ListViewItem item = new ListViewItem(itemArr);
             Bucket.Items.Add(item);
-
         }
         private void Bucket_DragEnter(object sender, DragEventArgs e)
         {
@@ -81,15 +81,19 @@ namespace Restaurant1
             catch { }
         }
         private void TempOrderTimeCheck_Click(object sender, EventArgs e)
-        { 
-            var resL = new List<string>();
-            foreach (ListViewItem item in Bucket.Items)
+        {
+            try
             {
-                resL.Add(item.SubItems[0].Text);
+                var resL = new List<string>();
+                foreach (ListViewItem item in Bucket.Items)
+                {
+                    resL.Add(item.SubItems[0].Text);
+                }
+                var order = formLogic.CreateTempOrder(resL.ToArray());
+                var res = kitchen.GetTempOrderTime(order).ToString();
+                TempOrderTimeLabel.Text = res;
             }
-            var order = formLogic.CreateTempOrder(resL.ToArray());
-            var res = kitchen.GetTempOrderTime(order).ToString();
-            TempOrderTimeLabel.Text = res;
+            catch { }
         }
 
         private void RemoveB_Click(object sender, EventArgs e)
@@ -115,6 +119,16 @@ namespace Restaurant1
         private void TempB1_Click(object sender, EventArgs e)
         {
             textB.Text = formLogic.GetAllTime();
+        }
+
+        private void TempB2_Click(object sender, EventArgs e)
+        {
+            textB.Text = kitchen.PrintCookers();
+        }
+
+        private void TempB3_Click(object sender, EventArgs e)
+        {
+            kitchen.SetTimePoint();
         }
     }
 }

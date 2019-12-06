@@ -2,14 +2,10 @@
 namespace Restaurant1.Classes
 {
     [Serializable]
-    public class Chef : Cooker
+    public class Chef : Cooker, ICloneable
     {
         public Chef(params Quisine[] quisines) : base(quisines)
         {
-        }
-        public void Print()
-        {
-            //Console.WriteLine(this.GetId());
         }
         public override void SetTimeCooking(Dish dish)
         {

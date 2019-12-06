@@ -43,7 +43,6 @@ namespace Restaurant1.Classes
         }
         public string GetName()
         {
-            //Console.WriteLine(this.name);
             return this.name;
         }
     }
