@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<orders>
+	<order ID="1" price="395" time="11">
+		<dish name="Pasta" price="100" time="4" />
+		<dish name="Borshch" price="120" time="2" />
+		<dish name="Pasta" price="100" time="4" />
+		<dish name="Pesto" price="75" time="1" />
+	</order>
+</orders>

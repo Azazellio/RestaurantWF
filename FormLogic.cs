@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace Restaurant1
 {
@@ -102,6 +103,28 @@ namespace Restaurant1
                 sum += int.Parse(item.SubItems[index].Text);
             }
             return sum;
+        }
+        public List<String> CollectDishes(ListView lv)
+        {
+            var res = new List<string>();
+            foreach(ListViewItem item in lv.Items)
+            {
+                res.Add(item.SubItems[0].Text);
+            }
+            res.RemoveAt(res.Count - 1);
+            return res;
+        }
+        public void XmlSerialize(ListView lv)
+        {
+            Order order = this.CreateOrder(this.CollectDishes(lv).ToArray());
+            XmlWriterSettings settingsxml = new XmlWriterSettings();
+            settingsxml.Indent = true;
+            settingsxml.IndentChars = "\t";
+            XmlWriter writer = XmlWriter.Create(FormLogic.filenamexml, settingsxml);
+            writer.WriteStartElement("orders");
+            order.WriteXml(writer);
+            writer.WriteEndElement();
+            writer.Close();
         }
     }
 }

@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using Newtonsoft.Json;
+using Restaurant0.DataHandlers;
 using Restaurant1.Classes;
 using Restaurant1.DataHandlers;
 
@@ -164,6 +167,35 @@ namespace Restaurant1
         private void TempB3_Click(object sender, EventArgs e)
         {
             kitchen.SetTimePoint();
+        }
+
+        private void TxtMenuItem_Click(object sender, EventArgs e)
+        {
+            Order order = formLogic.CreateOrder(formLogic.CollectDishes(Bucket).ToArray());
+            var serealized = TxtSerealizer.Serialize(order);
+            TxtSerealizer.WriteTo(serealized, FormLogic.filenametxt);
+        }
+        private void JsonMenuItem_Click(object sender, EventArgs e)
+        {
+            Order order = formLogic.CreateOrder(formLogic.CollectDishes(Bucket).ToArray());
+            var settingsjson = new JsonSerializerSettings() { ContractResolver = new MyContractResolver() };
+            var json = JsonConvert.SerializeObject(order, Newtonsoft.Json.Formatting.Indented, settingsjson);
+            TxtSerealizer.WriteTo(json, FormLogic.filenamejson);
+        }
+
+        private void XmlMenuItem_Click(object sender, EventArgs e)
+        {
+            Order order = formLogic.CreateOrder(formLogic.CollectDishes(Bucket).ToArray());
+            var orderList = new List<Order> { order };
+            XmlWriterSettings settingsxml = new XmlWriterSettings();
+            settingsxml.Indent = true;
+            settingsxml.IndentChars = "\t";
+            XmlWriter writer = XmlWriter.Create(FormLogic.filenamexml, settingsxml);
+            writer.WriteStartElement("orders");
+            order.WriteXml(writer);
+            writer.WriteEndElement();
+            writer.Close();
+            //formLogic.XmlSerialize(Bucket);
         }
     }
 }

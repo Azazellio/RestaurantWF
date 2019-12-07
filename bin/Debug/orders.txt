@@ -1,0 +1,3 @@
+0-Pizza,Borshch,Vareniki,Pizza,
+1-Borshch,Pizza,Ramen,Salo,
+2-Ramen,Salo,Sushi,Sashimi,

@@ -38,6 +38,9 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.serializeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.jsonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.xmlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.TempB3 = new System.Windows.Forms.Button();
@@ -51,6 +54,11 @@
             this.TimeNeededToCookLabel = new System.Windows.Forms.Label();
             this.SubmitOrderLabel = new System.Windows.Forms.Label();
             this.BucketLabel = new System.Windows.Forms.Label();
+            this.menuStrip3 = new System.Windows.Forms.MenuStrip();
+            this.serializeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.jsonMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.xmlMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.ReadyOrdersList = new System.Windows.Forms.ListView();
@@ -67,6 +75,7 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.menuStrip3.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,7 +98,7 @@
             this.SubmitOrderButton.BackColor = System.Drawing.Color.MediumSpringGreen;
             this.SubmitOrderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SubmitOrderButton.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.SubmitOrderButton.Location = new System.Drawing.Point(35, 288);
+            this.SubmitOrderButton.Location = new System.Drawing.Point(35, 378);
             this.SubmitOrderButton.Name = "SubmitOrderButton";
             this.SubmitOrderButton.Size = new System.Drawing.Size(75, 39);
             this.SubmitOrderButton.TabIndex = 1;
@@ -107,9 +116,9 @@
             this.Bucket.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Bucket.GridLines = true;
             this.Bucket.HideSelection = false;
-            this.Bucket.Location = new System.Drawing.Point(159, 36);
+            this.Bucket.Location = new System.Drawing.Point(159, 66);
             this.Bucket.Name = "Bucket";
-            this.Bucket.Size = new System.Drawing.Size(511, 411);
+            this.Bucket.Size = new System.Drawing.Size(511, 381);
             this.Bucket.TabIndex = 2;
             this.Bucket.UseCompatibleStateImageBehavior = false;
             this.Bucket.View = System.Windows.Forms.View.Details;
@@ -141,7 +150,7 @@
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Location = new System.Drawing.Point(0, 28);
+            this.menuStrip1.Location = new System.Drawing.Point(0, 36);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(917, 24);
             this.menuStrip1.TabIndex = 4;
@@ -154,15 +163,41 @@
             this.serializeToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(917, 28);
+            this.menuStrip2.Size = new System.Drawing.Size(917, 36);
             this.menuStrip2.TabIndex = 5;
             this.menuStrip2.Text = "menuStrip2";
             // 
             // serializeToolStripMenuItem
             // 
+            this.serializeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.txtToolStripMenuItem,
+            this.jsonToolStripMenuItem,
+            this.xmlToolStripMenuItem});
+            this.serializeToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.serializeToolStripMenuItem.Name = "serializeToolStripMenuItem";
-            this.serializeToolStripMenuItem.Size = new System.Drawing.Size(79, 24);
+            this.serializeToolStripMenuItem.Size = new System.Drawing.Size(98, 32);
             this.serializeToolStripMenuItem.Text = "Serialize";
+            // 
+            // txtToolStripMenuItem
+            // 
+            this.txtToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtToolStripMenuItem.Name = "txtToolStripMenuItem";
+            this.txtToolStripMenuItem.Size = new System.Drawing.Size(138, 32);
+            this.txtToolStripMenuItem.Text = ".txt";
+            // 
+            // jsonToolStripMenuItem
+            // 
+            this.jsonToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.jsonToolStripMenuItem.Name = "jsonToolStripMenuItem";
+            this.jsonToolStripMenuItem.Size = new System.Drawing.Size(138, 32);
+            this.jsonToolStripMenuItem.Text = ".json";
+            // 
+            // xmlToolStripMenuItem
+            // 
+            this.xmlToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xmlToolStripMenuItem.Name = "xmlToolStripMenuItem";
+            this.xmlToolStripMenuItem.Size = new System.Drawing.Size(138, 32);
+            this.xmlToolStripMenuItem.Text = ".xml";
             // 
             // tabControl1
             // 
@@ -231,6 +266,7 @@
             this.tabPage2.Controls.Add(this.BucketLabel);
             this.tabPage2.Controls.Add(this.Bucket);
             this.tabPage2.Controls.Add(this.SubmitOrderButton);
+            this.tabPage2.Controls.Add(this.menuStrip3);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -243,7 +279,7 @@
             // 
             this.RemoveDishLabel.AutoSize = true;
             this.RemoveDishLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RemoveDishLabel.Location = new System.Drawing.Point(6, 36);
+            this.RemoveDishLabel.Location = new System.Drawing.Point(3, 84);
             this.RemoveDishLabel.Name = "RemoveDishLabel";
             this.RemoveDishLabel.Size = new System.Drawing.Size(128, 25);
             this.RemoveDishLabel.TabIndex = 10;
@@ -255,7 +291,7 @@
             this.RemoveB.Cursor = System.Windows.Forms.Cursors.Hand;
             this.RemoveB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RemoveB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RemoveB.Location = new System.Drawing.Point(35, 75);
+            this.RemoveB.Location = new System.Drawing.Point(35, 123);
             this.RemoveB.Name = "RemoveB";
             this.RemoveB.Size = new System.Drawing.Size(75, 36);
             this.RemoveB.TabIndex = 9;
@@ -269,7 +305,7 @@
             this.TempOrderTimeLabel.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.TempOrderTimeLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.TempOrderTimeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TempOrderTimeLabel.Location = new System.Drawing.Point(63, 175);
+            this.TempOrderTimeLabel.Location = new System.Drawing.Point(62, 219);
             this.TempOrderTimeLabel.Name = "TempOrderTimeLabel";
             this.TempOrderTimeLabel.Size = new System.Drawing.Size(21, 24);
             this.TempOrderTimeLabel.TabIndex = 8;
@@ -277,7 +313,7 @@
             // 
             // TempOrderTimeCheck
             // 
-            this.TempOrderTimeCheck.Location = new System.Drawing.Point(35, 202);
+            this.TempOrderTimeCheck.Location = new System.Drawing.Point(35, 260);
             this.TempOrderTimeCheck.Name = "TempOrderTimeCheck";
             this.TempOrderTimeCheck.Size = new System.Drawing.Size(75, 41);
             this.TempOrderTimeCheck.TabIndex = 7;
@@ -289,7 +325,7 @@
             // 
             this.TimeNeededToCookLabel.AutoSize = true;
             this.TimeNeededToCookLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TimeNeededToCookLabel.Location = new System.Drawing.Point(6, 150);
+            this.TimeNeededToCookLabel.Location = new System.Drawing.Point(6, 174);
             this.TimeNeededToCookLabel.Name = "TimeNeededToCookLabel";
             this.TimeNeededToCookLabel.Size = new System.Drawing.Size(130, 25);
             this.TimeNeededToCookLabel.TabIndex = 6;
@@ -299,7 +335,7 @@
             // 
             this.SubmitOrderLabel.AutoSize = true;
             this.SubmitOrderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SubmitOrderLabel.Location = new System.Drawing.Point(6, 260);
+            this.SubmitOrderLabel.Location = new System.Drawing.Point(6, 333);
             this.SubmitOrderLabel.Name = "SubmitOrderLabel";
             this.SubmitOrderLabel.Size = new System.Drawing.Size(128, 25);
             this.SubmitOrderLabel.TabIndex = 4;
@@ -309,11 +345,53 @@
             // 
             this.BucketLabel.AutoSize = true;
             this.BucketLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BucketLabel.Location = new System.Drawing.Point(351, 8);
+            this.BucketLabel.Location = new System.Drawing.Point(343, 38);
             this.BucketLabel.Name = "BucketLabel";
             this.BucketLabel.Size = new System.Drawing.Size(118, 25);
             this.BucketLabel.TabIndex = 3;
             this.BucketLabel.Text = "Your Bucket";
+            // 
+            // menuStrip3
+            // 
+            this.menuStrip3.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.serializeToolStripMenuItem1});
+            this.menuStrip3.Location = new System.Drawing.Point(3, 3);
+            this.menuStrip3.Name = "menuStrip3";
+            this.menuStrip3.Size = new System.Drawing.Size(667, 28);
+            this.menuStrip3.TabIndex = 11;
+            this.menuStrip3.Text = "menuStrip3";
+            // 
+            // serializeToolStripMenuItem1
+            // 
+            this.serializeToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.txtMenuItem,
+            this.jsonMenuItem,
+            this.xmlMenuItem});
+            this.serializeToolStripMenuItem1.Name = "serializeToolStripMenuItem1";
+            this.serializeToolStripMenuItem1.Size = new System.Drawing.Size(79, 24);
+            this.serializeToolStripMenuItem1.Text = "Serialize";
+            // 
+            // txtMenuItem
+            // 
+            this.txtMenuItem.Name = "txtMenuItem";
+            this.txtMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.txtMenuItem.Text = ".txt";
+            this.txtMenuItem.Click += new System.EventHandler(this.TxtMenuItem_Click);
+            // 
+            // jsonMenuItem
+            // 
+            this.jsonMenuItem.Name = "jsonMenuItem";
+            this.jsonMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.jsonMenuItem.Text = ".json";
+            this.jsonMenuItem.Click += new System.EventHandler(this.JsonMenuItem_Click);
+            // 
+            // xmlMenuItem
+            // 
+            this.xmlMenuItem.Name = "xmlMenuItem";
+            this.xmlMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.xmlMenuItem.Text = ".xml";
+            this.xmlMenuItem.Click += new System.EventHandler(this.XmlMenuItem_Click);
             // 
             // tabPage3
             // 
@@ -443,6 +521,8 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.menuStrip3.ResumeLayout(false);
+            this.menuStrip3.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
@@ -487,6 +567,14 @@
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ColumnHeader Price;
+        private System.Windows.Forms.ToolStripMenuItem txtToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem jsonToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem xmlToolStripMenuItem;
+        private System.Windows.Forms.MenuStrip menuStrip3;
+        private System.Windows.Forms.ToolStripMenuItem serializeToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem txtMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem jsonMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem xmlMenuItem;
     }
 }
 

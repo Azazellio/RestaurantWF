@@ -17,7 +17,7 @@ namespace Restaurant0.DataHandlers
             }
             return res;
         }
-        private static string Serialize(Order order)
+        public static string Serialize(Order order)
         {
             var result = "";
             result += order.GetId().ToString();
@@ -64,15 +64,12 @@ namespace Restaurant0.DataHandlers
         {
             try
             {
-                using (StreamWriter Swriter = new StreamWriter(fileName))
+                using (StreamWriter Swriter = new StreamWriter(fileName, append: true))
                 {
                     Swriter.Write(lines);
                 }
             }
-            catch (Exception exp)
-            {
-                Console.Write(exp.Message);
-            }
+            catch { }
         }
         public static string ReadFrom(string fileName)
         {
