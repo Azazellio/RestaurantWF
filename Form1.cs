@@ -73,7 +73,6 @@ namespace Restaurant1
                     Bucket.Items[Bucket.Items.Count - 1].SubItems[2].ResetStyle();
                     Bucket.Items.RemoveAt(Bucket.Items.Count - 1);
                 }
-
             }
             Dish dish = kitchen.GetDishByName(e.Data.GetData(DataFormats.Text).ToString());
             string time = dish.GetTime().ToString();
@@ -154,48 +153,26 @@ namespace Restaurant1
                 ReadyOrdersList.Items.Add(item);
             }
         }
-        private void TempB1_Click(object sender, EventArgs e)
-        {
-            textB.Text = formLogic.GetAllTime();
-        }
-
-        private void TempB2_Click(object sender, EventArgs e)
-        {
-            textB.Text = kitchen.PrintCookers();
-        }
-
         private void TempB3_Click(object sender, EventArgs e)
         {
             kitchen.SetTimePoint();
         }
-
         private void TxtMenuItem_Click(object sender, EventArgs e)
         {
-            Order order = formLogic.CreateOrder(formLogic.CollectDishes(Bucket).ToArray());
-            var serealized = TxtSerealizer.Serialize(order);
-            TxtSerealizer.WriteTo(serealized, FormLogic.filenametxt);
+            formLogic.TxtSerialize(Bucket);
         }
         private void JsonMenuItem_Click(object sender, EventArgs e)
         {
-            Order order = formLogic.CreateOrder(formLogic.CollectDishes(Bucket).ToArray());
-            var settingsjson = new JsonSerializerSettings() { ContractResolver = new MyContractResolver() };
-            var json = JsonConvert.SerializeObject(order, Newtonsoft.Json.Formatting.Indented, settingsjson);
-            TxtSerealizer.WriteTo(json, FormLogic.filenamejson);
+            formLogic.JsonSerialize(Bucket);
         }
-
         private void XmlMenuItem_Click(object sender, EventArgs e)
         {
-            Order order = formLogic.CreateOrder(formLogic.CollectDishes(Bucket).ToArray());
-            var orderList = new List<Order> { order };
-            XmlWriterSettings settingsxml = new XmlWriterSettings();
-            settingsxml.Indent = true;
-            settingsxml.IndentChars = "\t";
-            XmlWriter writer = XmlWriter.Create(FormLogic.filenamexml, settingsxml);
-            writer.WriteStartElement("orders");
-            order.WriteXml(writer);
-            writer.WriteEndElement();
-            writer.Close();
-            //formLogic.XmlSerialize(Bucket);
+            formLogic.XmlSerialize(Bucket);
+        }
+        private void ClearBucket_Click(object sender, EventArgs e)
+        {
+            Bucket.Clear();
+            Bucket.Refresh();
         }
     }
 }

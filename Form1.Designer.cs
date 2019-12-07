@@ -35,18 +35,11 @@
             this.time1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Price = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.textB = new System.Windows.Forms.TextBox();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
-            this.serializeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.jsonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.xmlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.TempB3 = new System.Windows.Forms.Button();
-            this.TempB2 = new System.Windows.Forms.Button();
-            this.tempB1 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.ClearBucket = new System.Windows.Forms.Button();
             this.RemoveDishLabel = new System.Windows.Forms.Label();
             this.RemoveB = new System.Windows.Forms.Button();
             this.TempOrderTimeLabel = new System.Windows.Forms.Label();
@@ -71,7 +64,6 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.OrderTimeLabel = new System.Windows.Forms.Label();
             this.MenuLabel = new System.Windows.Forms.Label();
-            this.menuStrip2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -83,10 +75,10 @@
             // 
             this.menu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menu.HideSelection = false;
-            this.menu.Location = new System.Drawing.Point(745, 94);
+            this.menu.Location = new System.Drawing.Point(745, 75);
             this.menu.MultiSelect = false;
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(127, 419);
+            this.menu.Size = new System.Drawing.Size(127, 438);
             this.menu.TabIndex = 0;
             this.menu.UseCompatibleStateImageBehavior = false;
             this.menu.View = System.Windows.Forms.View.List;
@@ -118,7 +110,7 @@
             this.Bucket.HideSelection = false;
             this.Bucket.Location = new System.Drawing.Point(159, 66);
             this.Bucket.Name = "Bucket";
-            this.Bucket.Size = new System.Drawing.Size(511, 381);
+            this.Bucket.Size = new System.Drawing.Size(511, 417);
             this.Bucket.TabIndex = 2;
             this.Bucket.UseCompatibleStateImageBehavior = false;
             this.Bucket.View = System.Windows.Forms.View.Details;
@@ -147,80 +139,26 @@
             this.textB.Size = new System.Drawing.Size(535, 375);
             this.textB.TabIndex = 3;
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Location = new System.Drawing.Point(0, 36);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(917, 24);
-            this.menuStrip1.TabIndex = 4;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // menuStrip2
-            // 
-            this.menuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.serializeToolStripMenuItem});
-            this.menuStrip2.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(917, 36);
-            this.menuStrip2.TabIndex = 5;
-            this.menuStrip2.Text = "menuStrip2";
-            // 
-            // serializeToolStripMenuItem
-            // 
-            this.serializeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.txtToolStripMenuItem,
-            this.jsonToolStripMenuItem,
-            this.xmlToolStripMenuItem});
-            this.serializeToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.serializeToolStripMenuItem.Name = "serializeToolStripMenuItem";
-            this.serializeToolStripMenuItem.Size = new System.Drawing.Size(98, 32);
-            this.serializeToolStripMenuItem.Text = "Serialize";
-            // 
-            // txtToolStripMenuItem
-            // 
-            this.txtToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtToolStripMenuItem.Name = "txtToolStripMenuItem";
-            this.txtToolStripMenuItem.Size = new System.Drawing.Size(138, 32);
-            this.txtToolStripMenuItem.Text = ".txt";
-            // 
-            // jsonToolStripMenuItem
-            // 
-            this.jsonToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.jsonToolStripMenuItem.Name = "jsonToolStripMenuItem";
-            this.jsonToolStripMenuItem.Size = new System.Drawing.Size(138, 32);
-            this.jsonToolStripMenuItem.Text = ".json";
-            // 
-            // xmlToolStripMenuItem
-            // 
-            this.xmlToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xmlToolStripMenuItem.Name = "xmlToolStripMenuItem";
-            this.xmlToolStripMenuItem.Size = new System.Drawing.Size(138, 32);
-            this.xmlToolStripMenuItem.Text = ".xml";
-            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(12, 31);
+            this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(681, 482);
+            this.tabControl1.Size = new System.Drawing.Size(681, 515);
             this.tabControl1.TabIndex = 6;
             this.tabControl1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TabControl1_MouseClick);
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.TempB3);
-            this.tabPage1.Controls.Add(this.TempB2);
-            this.tabPage1.Controls.Add(this.tempB1);
             this.tabPage1.Controls.Add(this.textB);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(673, 453);
+            this.tabPage1.Size = new System.Drawing.Size(673, 486);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Dishes Info";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -235,28 +173,9 @@
             this.TempB3.UseVisualStyleBackColor = true;
             this.TempB3.Click += new System.EventHandler(this.TempB3_Click);
             // 
-            // TempB2
-            // 
-            this.TempB2.Location = new System.Drawing.Point(34, 242);
-            this.TempB2.Name = "TempB2";
-            this.TempB2.Size = new System.Drawing.Size(75, 23);
-            this.TempB2.TabIndex = 5;
-            this.TempB2.Text = "temp2";
-            this.TempB2.UseVisualStyleBackColor = true;
-            this.TempB2.Click += new System.EventHandler(this.TempB2_Click);
-            // 
-            // tempB1
-            // 
-            this.tempB1.Location = new System.Drawing.Point(34, 152);
-            this.tempB1.Name = "tempB1";
-            this.tempB1.Size = new System.Drawing.Size(75, 23);
-            this.tempB1.TabIndex = 4;
-            this.tempB1.Text = "temp1";
-            this.tempB1.UseVisualStyleBackColor = true;
-            this.tempB1.Click += new System.EventHandler(this.TempB1_Click);
-            // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.ClearBucket);
             this.tabPage2.Controls.Add(this.RemoveDishLabel);
             this.tabPage2.Controls.Add(this.RemoveB);
             this.tabPage2.Controls.Add(this.TempOrderTimeLabel);
@@ -270,10 +189,22 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(673, 453);
+            this.tabPage2.Size = new System.Drawing.Size(673, 486);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Create Order";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // ClearBucket
+            // 
+            this.ClearBucket.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ClearBucket.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClearBucket.Location = new System.Drawing.Point(6, 447);
+            this.ClearBucket.Name = "ClearBucket";
+            this.ClearBucket.Size = new System.Drawing.Size(81, 33);
+            this.ClearBucket.TabIndex = 12;
+            this.ClearBucket.Text = "Clear";
+            this.ClearBucket.UseVisualStyleBackColor = true;
+            this.ClearBucket.Click += new System.EventHandler(this.ClearBucket_Click);
             // 
             // RemoveDishLabel
             // 
@@ -325,7 +256,7 @@
             // 
             this.TimeNeededToCookLabel.AutoSize = true;
             this.TimeNeededToCookLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TimeNeededToCookLabel.Location = new System.Drawing.Point(6, 174);
+            this.TimeNeededToCookLabel.Location = new System.Drawing.Point(6, 184);
             this.TimeNeededToCookLabel.Name = "TimeNeededToCookLabel";
             this.TimeNeededToCookLabel.Size = new System.Drawing.Size(130, 25);
             this.TimeNeededToCookLabel.TabIndex = 6;
@@ -369,27 +300,27 @@
             this.jsonMenuItem,
             this.xmlMenuItem});
             this.serializeToolStripMenuItem1.Name = "serializeToolStripMenuItem1";
-            this.serializeToolStripMenuItem1.Size = new System.Drawing.Size(79, 24);
+            this.serializeToolStripMenuItem1.Size = new System.Drawing.Size(79, 26);
             this.serializeToolStripMenuItem1.Text = "Serialize";
             // 
             // txtMenuItem
             // 
             this.txtMenuItem.Name = "txtMenuItem";
-            this.txtMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.txtMenuItem.Size = new System.Drawing.Size(122, 26);
             this.txtMenuItem.Text = ".txt";
             this.txtMenuItem.Click += new System.EventHandler(this.TxtMenuItem_Click);
             // 
             // jsonMenuItem
             // 
             this.jsonMenuItem.Name = "jsonMenuItem";
-            this.jsonMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.jsonMenuItem.Size = new System.Drawing.Size(122, 26);
             this.jsonMenuItem.Text = ".json";
             this.jsonMenuItem.Click += new System.EventHandler(this.JsonMenuItem_Click);
             // 
             // xmlMenuItem
             // 
             this.xmlMenuItem.Name = "xmlMenuItem";
-            this.xmlMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.xmlMenuItem.Size = new System.Drawing.Size(122, 26);
             this.xmlMenuItem.Text = ".xml";
             this.xmlMenuItem.Click += new System.EventHandler(this.XmlMenuItem_Click);
             // 
@@ -402,7 +333,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(673, 453);
+            this.tabPage3.Size = new System.Drawing.Size(673, 486);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Check Order";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -494,7 +425,7 @@
             // 
             this.MenuLabel.AutoSize = true;
             this.MenuLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MenuLabel.Location = new System.Drawing.Point(777, 56);
+            this.MenuLabel.Location = new System.Drawing.Point(778, 37);
             this.MenuLabel.Name = "MenuLabel";
             this.MenuLabel.Size = new System.Drawing.Size(62, 25);
             this.MenuLabel.TabIndex = 7;
@@ -508,14 +439,9 @@
             this.Controls.Add(this.MenuLabel);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menu);
-            this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.menuStrip2);
-            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.menuStrip2.ResumeLayout(false);
-            this.menuStrip2.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -536,9 +462,6 @@
         private System.Windows.Forms.Button SubmitOrderButton;
         private System.Windows.Forms.ListView Bucket;
         private System.Windows.Forms.TextBox textB;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.MenuStrip menuStrip2;
-        private System.Windows.Forms.ToolStripMenuItem serializeToolStripMenuItem;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
@@ -558,8 +481,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.Button tempB1;
-        private System.Windows.Forms.Button TempB2;
         private System.Windows.Forms.Button TempB3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListView ReadyOrdersList;
@@ -567,14 +488,12 @@
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ColumnHeader Price;
-        private System.Windows.Forms.ToolStripMenuItem txtToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem jsonToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem xmlToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip3;
         private System.Windows.Forms.ToolStripMenuItem serializeToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem txtMenuItem;
         private System.Windows.Forms.ToolStripMenuItem jsonMenuItem;
         private System.Windows.Forms.ToolStripMenuItem xmlMenuItem;
+        private System.Windows.Forms.Button ClearBucket;
     }
 }
 

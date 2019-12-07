@@ -1,7 +1,10 @@
-﻿using Restaurant1.Classes;
+﻿using Newtonsoft.Json;
+using Restaurant0.DataHandlers;
+using Restaurant1.Classes;
 using Restaurant1.DataHandlers;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,9 +15,7 @@ namespace Restaurant1
 {
     class FormLogic
     {
-        public static readonly string filenamexml = "order1.xml";
-        public static readonly string filenamejson = "orders.json";
-        public static readonly string filenametxt = "orders.txt";
+        public static readonly string filename = "order";
         public static readonly string filenamebinary = "noOrders.lol";
         public static bool isKitchenStarted = false;
         private Kitchen kitchen;
@@ -116,15 +117,38 @@ namespace Restaurant1
         }
         public void XmlSerialize(ListView lv)
         {
+            EnsureDirectoryExists("XMLOrders");
             Order order = this.CreateOrder(this.CollectDishes(lv).ToArray());
             XmlWriterSettings settingsxml = new XmlWriterSettings();
             settingsxml.Indent = true;
             settingsxml.IndentChars = "\t";
-            XmlWriter writer = XmlWriter.Create(FormLogic.filenamexml, settingsxml);
+            XmlWriter writer = XmlWriter.Create("XMLOrders/" + FormLogic.filename + order.GetId().ToString() + ".xml", settingsxml);
             writer.WriteStartElement("orders");
             order.WriteXml(writer);
             writer.WriteEndElement();
             writer.Close();
+            writer.Flush();
+        }
+        public void JsonSerialize(ListView lv)
+        {
+            EnsureDirectoryExists("JSONOrders");
+            Order order = this.CreateOrder(this.CollectDishes(lv).ToArray());
+            var settingsjson = new JsonSerializerSettings() { ContractResolver = new MyContractResolver() };
+            var json = JsonConvert.SerializeObject(order, Newtonsoft.Json.Formatting.Indented, settingsjson);
+            TxtSerealizer.WriteTo(json, "JSONOrders/" + FormLogic.filename + order.GetId().ToString() + ".json");
+        }
+        public void TxtSerialize(ListView lv)
+        {
+            Order order = this.CreateOrder(this.CollectDishes(lv).ToArray());
+            var serealized = TxtSerealizer.Serialize(order);
+            TxtSerealizer.WriteTo(serealized, FormLogic.filename + order.GetId().ToString() + ".txt");
+        }
+        private static void EnsureDirectoryExists(string destination)
+        {
+            if (!Directory.Exists(destination))
+            {
+                Directory.CreateDirectory(destination);
+            }
         }
     }
 }
