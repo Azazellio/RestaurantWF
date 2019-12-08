@@ -77,6 +77,12 @@ namespace Restaurant1
             }
             return order;
         }
+
+        public Order DeserializeOrder(string path) //
+        {
+            var order = TxtSerealizer.DeserializeOrder(path, kitchen);
+            return order;
+        }
         public String GetDishInfo(string name)
         {
             Dish dish = kitchen.GetDishByName(name);
@@ -139,9 +145,10 @@ namespace Restaurant1
         }
         public void TxtSerialize(ListView lv)
         {
+            EnsureDirectoryExists("TXTOrders");
             Order order = this.CreateOrder(this.CollectDishes(lv).ToArray());
             var serealized = TxtSerealizer.Serialize(order);
-            TxtSerealizer.WriteTo(serealized, FormLogic.filename + order.GetId().ToString() + ".txt");
+            TxtSerealizer.WriteTo(serealized, "TXTOrders/" + FormLogic.filename + order.GetId().ToString() + ".txt");
         }
         private static void EnsureDirectoryExists(string destination)
         {

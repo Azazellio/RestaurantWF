@@ -321,7 +321,8 @@ namespace Restaurant1.Classes
             int res = tempkitchen.CheckOrder(order);
             return res;
         }
-        public List<Order> DeserializeXml(string filename)
+        /*
+        public List<Order> DeserializeDirectoryXml(string filename) //Passing directory (with .xml files), not an .xml file
         {
             XmlDocument xml = new XmlDocument();
 
@@ -336,8 +337,29 @@ namespace Restaurant1.Classes
                 res.Add(ord);
             }
             return res;
-        }
+        }*/
+        public Order DeserializeOrderXml(string path)
+        {
+            XmlDocument xml = new XmlDocument();
+            xml.Load(path);
+            XmlNodeList listOfContacts = xml.SelectNodes("/orders/order");
+            var node = listOfContacts[0];
 
+
+            var id = int.Parse(node.Attributes[0].Value);
+            var price = int.Parse(node.Attributes[1].Value);
+            var time = int.Parse(node.Attributes[2].Value);
+
+            var dishesList = new List<Dish>();
+            foreach (XmlNode child in node)
+            {
+                Dish di = new Dish();
+                di.ReadXml(child.Attributes);
+                dishesList.Add(di);
+            }
+            var order = new Order(id, time, price, dishesList.ToArray());
+            return order;
+        }
         public object Clone()
         {
             var isStarted = false;

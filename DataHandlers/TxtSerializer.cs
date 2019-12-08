@@ -29,7 +29,7 @@ namespace Restaurant0.DataHandlers
             }
             return result + "\n";
         }
-        public static List<Order> Deserialize(string lines, Kitchen kitchen)
+        public static List<Order> DeserializeList(string lines, Kitchen kitchen)
         {
             var orderList = new List<Order>();
             string[] splittedLines = lines.Split('\n');
@@ -53,6 +53,27 @@ namespace Restaurant0.DataHandlers
             }
             kitchen.AddOrder(orderList.ToArray());
             return orderList;
+        }
+        public static Order DeserializeOrder(string path, Kitchen kitchen)
+        {
+            var line = ReadFrom(path);
+            Order order = new Order();
+            line = line.Replace("\n", "");
+            if (line != "")
+            {
+                string[] splittedLine = line.Split('-');
+                order = new Order(int.Parse(splittedLine[0]));
+                string[] dishesLines = splittedLine[1].Split(',');
+                foreach (var dishLine in dishesLines)
+                {
+                    if (dishLine != "")
+                    {
+                        var newdish = DeserializeDish(dishLine, kitchen);
+                        order.AddDish(newdish);
+                    }
+                }
+            }
+            return order;
         }
         private static Dish DeserializeDish(string line, Kitchen kitchen)
         {
@@ -114,6 +135,10 @@ namespace Restaurant0.DataHandlers
             {
                 order.SetPropsAfterJDeserealization(kitchen);
             }
+        }
+        public static void SetProps(Order order, Kitchen kitchen)
+        {
+            order.SetPropsAfterJDeserealization(kitchen);
         }
     }
 }

@@ -30,6 +30,21 @@ namespace Restaurant1.Classes
             this.time = this.CountTime();
             this.price = this.GetPrice();
         }
+        public Order(int id, int time, int price, params Dish[] dishes)
+        {
+            this.time_created = DateTime.Now;
+            this.time_createdS = DateTime.Now.ToString("hh:mm tt");
+            this.id = id;
+            this.time = time;
+            this.price = price;
+            this.dishes = new List<Dish>();
+            this.ready_dishes = new List<Dish>();
+            this.dishesArr = dishes;
+            foreach (Dish dish in dishes)
+            {
+                this.AddDish(dish);
+            }
+        }
         public Order()
         {
             this.id = ID;
@@ -185,37 +200,29 @@ namespace Restaurant1.Classes
         }
 
         public XmlSchema GetSchema() { return null; }
-
-        public void ReadXml(XmlNode node)
+        /*
+        public Dictionary<string, Object> ReadXml(XmlNode node)
         {
-            //XmlDocument xmlDoc = new XmlDocument();
-            //xmlDoc.Load(filename);
-
-            /*foreach (XmlNode node in xmlDoc.SelectNodes("//order"))
-            {
-                id = int.Parse(node.Attributes[0].Value);
-                price = int.Parse(node.Attributes[1].Value);
-                time = int.Parse(node.Attributes[2].Value);
-
-                foreach (XmlNode child in node)
-                {
-                    Dish di = new Dish();
-                    di.ReadXml(child.Attributes);
-                    dishes.Add(di);
-                }
-            }*/
-
+            var dict = new Dictionary<string, Object>();
             id = int.Parse(node.Attributes[0].Value);
             price = int.Parse(node.Attributes[1].Value);
             time = int.Parse(node.Attributes[2].Value);
+
+            dict.Add("id", id);
+            dict.Add("price", price);
+            dict.Add("time", time);
+
+            var dishesList = new List<Dish>();
 
             foreach (XmlNode child in node)
             {
                 Dish di = new Dish();
                 di.ReadXml(child.Attributes);
-                dishes.Add(di);
+                dishesList.Add(di);
             }
-        }
+            dict.Add("dishes", dishesList);
+            return dict;
+        }*/
 
         public void WriteXml(XmlWriter writer)
         {

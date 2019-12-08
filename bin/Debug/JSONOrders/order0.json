@@ -1,0 +1,68 @@
+{
+  "time_created": "2019-12-08T14:33:16.9678706+02:00",
+  "price": 460.0,
+  "dishesArr": [
+    {
+      "orderId": 0,
+      "cooker": null,
+      "cookerId": 0,
+      "time": 5,
+      "time_cooking": 5,
+      "ingredients": [
+        "rice macaroni",
+        "fish",
+        "cucumber"
+      ],
+      "name": "Sashimi",
+      "price": 90.0,
+      "quisineName": null
+    },
+    {
+      "orderId": 0,
+      "cooker": null,
+      "cookerId": 0,
+      "time": 2,
+      "time_cooking": 2,
+      "ingredients": [
+        "cucumber",
+        "makaroni",
+        "tomatoes"
+      ],
+      "name": "Borshch",
+      "price": 120.0,
+      "quisineName": null
+    },
+    {
+      "orderId": 0,
+      "cooker": null,
+      "cookerId": 0,
+      "time": 3,
+      "time_cooking": 3,
+      "ingredients": [
+        "potato",
+        "dough",
+        "onion"
+      ],
+      "name": "Vareniki",
+      "price": 150.0,
+      "quisineName": null
+    },
+    {
+      "orderId": 0,
+      "cooker": null,
+      "cookerId": 0,
+      "time": 10,
+      "time_cooking": 10,
+      "ingredients": [
+        "pork fat",
+        "salt",
+        "time"
+      ],
+      "name": "Salo",
+      "price": 100.0,
+      "quisineName": null
+    }
+  ],
+  "time": 20,
+  "id": 0
+}

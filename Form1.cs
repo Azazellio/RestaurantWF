@@ -62,31 +62,59 @@ namespace Restaurant1
         }
         private void Bucket_DragDrop(object sender, DragEventArgs e)
         {
-            if (Bucket.Items.Count > 0 && Bucket.Items[0].SubItems[0].Text == "Drag Dishes here")
+            //operate dropped with files & folders here
+            var path = ((string[])e.Data.GetData(DataFormats.FileDrop))[0].ToString();
+            if (path.Contains(".txt"))
             {
-                Bucket.Items[0].Remove();
+                var order = formLogic.DeserializeOrder(path);
+                kitchen.AddOrder(order);
             }
-            else
+            else if (path.Contains(".json"))
             {
-                if (Bucket.Items.Count > 0)
-                {
-                    Bucket.Items[Bucket.Items.Count - 1].SubItems[2].ResetStyle();
-                    Bucket.Items.RemoveAt(Bucket.Items.Count - 1);
-                }
+                Order deserializedOrder = JsonConvert.DeserializeObject<Order>(TxtSerealizer.ReadFrom(path));       //JSON deserealization
+                TxtSerealizer.SetProps(deserializedOrder, kitchen);
+                textB.Text = deserializedOrder.GetDishesS();
             }
-            Dish dish = kitchen.GetDishByName(e.Data.GetData(DataFormats.Text).ToString());
-            string time = dish.GetTime().ToString();
-            string price = dish.GetPrice().ToString();
-            string[] itemArr = new string[] { e.Data.GetData(DataFormats.Text).ToString(), time, price };
-            ListViewItem item = new ListViewItem(itemArr);
-            Bucket.Items.Add(item);
-            var sum = formLogic.CountSumLV(Bucket, 2);
-            var sumarr = new string[] {"", "", sum.ToString() };
+            else if(path.Contains(".xml"))
+            {
+                var order = new Order();
+                order = kitchen.DeserializeOrderXml(path);
+                //kitchen.AddOrder(order);
+                textB.Text = order.GetDishesS();
+            }
 
-            ListViewItem sumItem = new ListViewItem(sumarr);
-            sumItem.SubItems[2].BackColor = Color.LightGreen;
-            sumItem.UseItemStyleForSubItems = false;
-            Bucket.Items.Add(sumItem);
+            try
+            { 
+                //var lol = kitchen.GetDishByName("dd"); 
+            }
+            catch // here with dropped with ListViewItems
+            {
+                if (Bucket.Items.Count > 0 && Bucket.Items[0].SubItems[0].Text == "Drag Dishes here")
+                {
+                    Bucket.Items[0].Remove();
+                }
+                else
+                {
+                    if (Bucket.Items.Count > 0)
+                    {
+                        Bucket.Items[Bucket.Items.Count - 1].SubItems[2].ResetStyle();
+                        Bucket.Items.RemoveAt(Bucket.Items.Count - 1);
+                    }
+                }
+                Dish dish = kitchen.GetDishByName(e.Data.GetData(DataFormats.Text).ToString());
+                string time = dish.GetTime().ToString();
+                string price = dish.GetPrice().ToString();
+                string[] itemArr = new string[] { e.Data.GetData(DataFormats.Text).ToString(), time, price };
+                ListViewItem item = new ListViewItem(itemArr);
+                Bucket.Items.Add(item);
+                var sum = formLogic.CountSumLV(Bucket, 2);
+                var sumarr = new string[] { "", "", sum.ToString() };
+
+                ListViewItem sumItem = new ListViewItem(sumarr);
+                sumItem.SubItems[2].BackColor = Color.LightGreen;
+                sumItem.UseItemStyleForSubItems = false;
+                Bucket.Items.Add(sumItem);
+            }
         }
         private void Bucket_DragEnter(object sender, DragEventArgs e)
         {
